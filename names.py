@@ -5,9 +5,13 @@ students = [
      {'first_name' : 'KB', 'last_name' : 'Tonel'}
 ]
 
-
-for i in students:
-    print i["first_name"] + " " + i["last_name"]
+def names(arr):
+    count = 1
+    for i in arr:
+        length = len(i["first_name"] + i["last_name"])
+        print count,"-", i["first_name"] + " " + i["last_name"],"-",length
+        count += 1
+names(students)
 
 users = {
  'Students': [
@@ -21,31 +25,25 @@ users = {
      {'first_name' : 'Martin', 'last_name' : 'Puryear'}
   ]
  }
+"""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I could not get this function to work the way I wanted it to, so I've commented
+it out but left to revisit at a later time. In the meantime, I got the desired 
+result by using my names() function in a global scope.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+def betterNames(d):
+    for i in d.iterkeys():
+        print i+":"
+        for j in d.itervalues():
+            names(j)
+
+betterNames(users)
+"""
 
 print "Students:"
-count = 0
-for i in users["Students"]:
-    string = i["first_name"]+i["last_name"]
-    length = str(len(string))
-    uh = str(count)
-    print uh+" - "+i["first_name"]+" "+i["last_name"]+" - "+length
-    count += 1
+names(users["Students"])
 
-print "Instructors:
-"
-count = 0
-for i in users["Instructors"]:
-    string = i["first_name"]+i["last_name"]
-    length = str(len(string))
-    uh = str(count)
-    print uh+" - "+i["first_name"]+" "+i["last_name"]+" - "+length
-    count += 1
-# #DICTIONARY > LIST > DICTIONARIES
-# for arr in users:
-#     print "{}:".format(arr)
-    
-#     #i represents the key values
-#     for i in range(0,len(arr)):
-#         print arr[0]
-        
-        
+print "Instructors:"
+names(users["Instructors"])
+
